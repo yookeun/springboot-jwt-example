@@ -2,6 +2,8 @@ package com.example.auth;
 
 import java.security.KeyPair;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,8 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -32,6 +36,7 @@ public class AuthorizationSeverConfig extends AuthorizationServerConfigurerAdapt
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
 	
     @Bean
     public TokenStore tokenStore() {
@@ -64,9 +69,21 @@ public class AuthorizationSeverConfig extends AuthorizationServerConfigurerAdapt
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager).accessTokenConverter(accessTokenConverter());
 	}
+	
+	@Bean
+	@Primary
+	public JdbcClientDetailsService JdbcClientDetailsService(DataSource dataSource) {
+		return new JdbcClientDetailsService(dataSource);
+	}
+	
+	
+	@Autowired
+	private ClientDetailsService clientDetailsService;
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {		
+		clients.withClientDetails(clientDetailsService);
+		/*
 		clients.inMemory()
 				.withClient("bar").secret("foo")		
 				.authorizedGrantTypes("password")
@@ -74,6 +91,7 @@ public class AuthorizationSeverConfig extends AuthorizationServerConfigurerAdapt
 				.scopes("read", "write")
 				.resourceIds(resourceId)
 				.accessTokenValiditySeconds(accessTokenValiditySeconds);
+		*/
 			
 	}
 	
