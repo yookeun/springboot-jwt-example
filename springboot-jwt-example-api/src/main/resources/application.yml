@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+security:
+  user:
+    name: user
+    password: test
+  oauth2:
+    resource:
+      jwt:
+        key-value: 
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr5ui+5AA8v1LivSYNGdZ
+            0O76SBgktU3CjG+BcUb0mJ1fl34+So75bRI3/+n8AJP//Xp3OS62niQyRB5LEdCr
+            7ox5RAQlLHFkkJHQysi2/236Br8ZDiM1AfT4Hz5AQ9D4Pk5H/n6stKuS2ZffHAWA
+            W7/qK7PC6z4ncSlhVYr/zXNj7HVx9YFP7gZx6faaar6UvV96vX8W4xcITxvLpaCB
+            nF9TeOUxLHYI3tmnxmE8gRQXpdCH7X3IB3f4QfVCMIIrSD8d3si5w5VArlEMRQ9I
+            TEOA0Iq8VJKGjlu+haycTgIPJD3yGhU7Zb3EQfBZvQGC31beogycEf9imnvHDW4N
+            vQIDAQAB
+            -----END PUBLIC KEY-----
+   
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver   
+    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true 
+    
