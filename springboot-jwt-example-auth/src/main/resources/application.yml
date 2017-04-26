@@ -1,17 +1,40 @@
 server:
-  port: 8082
+  port: 8081
+  #context-path: /auth
 
-security:
-  user:
-    name: user
-    password: test
+
+
+#security:
+#  basic:
+#    enabled: false
+#  user:
+#    name: user
+#    password: test
+#    
+
     
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver   
-    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver  
+    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8&useSSL=true
     username: root
     password: 1234
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 30
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver   
+#    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8&useSSL=true
+#    username: root
+#    password: 1234
 #  jpa:
 #    hibernate:
 #      ddl-auto: update

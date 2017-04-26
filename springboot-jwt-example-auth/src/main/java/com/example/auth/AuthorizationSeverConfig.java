@@ -49,9 +49,7 @@ public class AuthorizationSeverConfig extends AuthorizationServerConfigurerAdapt
 		//converter.setSigningKey("secret");
 		KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("server.jks"), "passtwo".toCharArray())
 				.getKeyPair("auth", "passone".toCharArray());
-		converter.setKeyPair(keyPair);
-		
-		
+		converter.setKeyPair(keyPair);		
 		return converter;
 	}
 	
@@ -81,8 +79,11 @@ public class AuthorizationSeverConfig extends AuthorizationServerConfigurerAdapt
 	private ClientDetailsService clientDetailsService;
 
 	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {		
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		
+		//oauth_client_details 테이블에 등록된 사용자로 조회한다.
 		clients.withClientDetails(clientDetailsService);
+
 		/*
 		clients.inMemory()
 				.withClient("bar").secret("foo")		
