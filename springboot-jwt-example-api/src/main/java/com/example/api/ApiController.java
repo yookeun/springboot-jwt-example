@@ -8,7 +8,7 @@ public class ApiController {
 	
 	@RequestMapping("/api/user")
 	public String user() {
-		return "Hello User!";
+		return "Hello Api User!";
 	}
 	
 	@RequestMapping("/hello")
