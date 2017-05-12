@@ -47,7 +47,7 @@ public class AuthTest {
 		//System.out.println(result.length());
 	}
 
-	@Ignore
+	//@Ignore
 	@Test
 	public void 엑세스토큰_받기() throws Exception {
 		mockMvc.perform(post("/oauth/token")
@@ -56,8 +56,15 @@ public class AuthTest {
 									.param("username", "user1")
 									.param("password", "1234"))
 			.andDo(print()).andExpect(status().isOk());
-		//curl -u client1:client1pwd http://localhost:8081/oauth/token -d  "grant_type=password&username=user1&password=1234"
+		//curl -u client1:client1pwd http://localhost:8081/restauth/oauth/token -d  "grant_type=password&username=user1&password=1234"
 		
 
+		/*
+		 * {
+	"grant_type":"password",
+	"username":"user1",
+	"password":"1234"
+}
+		 */
 	}
 }

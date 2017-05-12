@@ -8,6 +8,6 @@ import com.example.auth.user.model.User;
 
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	@Query("select u from User u where user_name = :username")
+	@Query("select u from User u where u.userName = :username")
 	User findByUsername(@Param("username") String username);
 }
