@@ -56,7 +56,7 @@ public class AuthTest {
 									.param("username", "user1")
 									.param("password", "1234"))
 			.andDo(print()).andExpect(status().isOk());
-		//curl -u client1:client1pwd http://localhost:8081/restauth/oauth/token -d  "grant_type=password&username=user1&password=1234"
+		//curl -u client2:client2pwd http://localhost:8081/restauth/oauth/token -d  "grant_type=password&username=user1&password=1234"
 		
 
 		/*
