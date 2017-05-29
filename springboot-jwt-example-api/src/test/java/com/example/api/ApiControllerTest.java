@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+
+
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 @SpringBootTest
@@ -38,6 +40,8 @@ public class ApiControllerTest {
 				.header("authorization", "bearer "+accessToken))
 		.andDo(print()).andExpect(status().isOk());
 		//curl -H "authorization: bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0OTMyMDgzMzUsInVzZXJfbmFtZSI6InVzZXIxIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImM2OTZlODRhLTNjZGYtNGFjNC04YzJkLWNlODAzNjMxODUwYSIsImNsaWVudF9pZCI6ImNsaWVudDEiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.EeQ0cCQF5hPEpuY2c95Bw7zdGP0tBCt3BBBwlh83YEIvexI82oUoHUxxDHRrsVCSWD5vTfahqY_FsUyhI5yoFkXUpUMarXDmIWz-5Ww_XPyzAoLIqmcjw-WCR9aJDn36w9ylz7-vXXmPnCXpxUpETBmgqKmJBF-6Yi-THi4OPs7kP0eZ_pyUB5pZSIO6pnH0E2kbqZfjEgoQ84AZJD2oXCjFXFO48HaMOLVU8nDTI1VnwM_5f5BfsA_UzJH_ktD8lUpARBvVkRSQVRU5Ek4p8FPZHNhPfxJlilDwaN4BSjpIfCQg0NMbzqQ4s7twlRr2Yi3gGCykMJlkzTz2LPNwtQ" http://localhost:8080/api/user
+		
+		
 	}
 	
 	

@@ -32,11 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     
     
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
-    
+    @Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    	 auth.authenticationProvider(authenticationProvider());
+	}
+
    /**
      * 데이터베이스 인증용 Provider
      * @return
