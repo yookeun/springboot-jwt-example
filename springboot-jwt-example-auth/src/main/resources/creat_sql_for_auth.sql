@@ -1,4 +1,4 @@
-use test_tb;
+use test_db;
 
 create table oauth_client_details (
   client_id VARCHAR(256) PRIMARY KEY,

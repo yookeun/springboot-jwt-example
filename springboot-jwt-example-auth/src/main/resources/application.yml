@@ -24,10 +24,10 @@ spring:
       maximum-pool-size: 10
       max-lifetime: 30
     
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
     
 #spring:
 #  datasource:
